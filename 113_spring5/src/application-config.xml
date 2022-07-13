@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                            http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="school" class="School">
+        <property name="name" value="子江中学"/>
+    </bean>
+    <util:list id="list">
+        <ref bean="school"/>
+        <ref bean="school"/>
+        <ref bean="school"/>
+    </util:list>
+
+    <util:map id="map">
+        <entry key="map1" value-ref="school"/>
+        <entry key="map2" value-ref="school"/>
+        <entry key="map3" value-ref="school"/>
+    </util:map>
+
+
+    <bean id="student" class="test.pojo.People">
+        <property name="name">
+            <value><![CDATA[小王]]></value>
+        </property>
+        <property name="list" ref="list"/>
+        <property name="map" ref="map"/>
+        <property name="schools" ref="list"/>
+    </bean>
+
+
+    <bean id="studentName" class="test.pojo.People">
+        <constructor-arg name="name">
+            <value><![CDATA[小俞]]></value>
+        </constructor-arg>
+    </bean>
+
+</beans>
